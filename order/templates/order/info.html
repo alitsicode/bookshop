@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}{% trans "recieve info" %}{% endblock title %}
+
+{% block content %}
+    
+    <form class='me-4 my-5 rtl' action="" method='POST'>
+        <h2 class="text-center text-light"><span class='bg-danger px-3 py-1 rounded-pill fs-5'>{% trans "edit recieve information" %}</span></h2>
+        {% csrf_token %}
+        {{form|crispy}}
+        <button class='btn btn-success' type='submit'>{% trans "done" %}</button>
+    </form>
+{% endblock content %}

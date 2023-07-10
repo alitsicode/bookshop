@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "create order" %}{% endblock title %}
+
+{% block content %}
+    
+    <h2 class='me-5 mt-3 rtl'>{% trans "your current recieve address" %} : </h2>
+    <div class='text-center'>
+        <div class='text-dark mb-3'>
+
+            {% comment %} user's information to recieve product {% endcomment %}
+            <span><strong>{% trans "Name" %} : {{infos.name}}</strong></span><br>
+            <span><strong>{% trans "Last Name" %} : {{infos.last_name}}</strong></span><br>
+            <span><strong>{% trans "Address" %} : {{infos.address}}</strong></span><br>
+            <span><strong>{% trans "Phone" %} : {{infos.phone_number}}</strong></span>
+        </div>
+        <form class='mb-4' action="" method='POST'>
+            {% csrf_token %}
+            {% if infos %}
+            <button class='btn bg-warning text-dark rounded-pill' type='submit'>{% trans "continue ordering" %}</button><br>
+            {% endif %}
+            <a class='btn bg-success my-3 rounded-pill text-white fs-6' href="{% url 'order_infocreate' %}">{% trans "new address" %}</a>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,500 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}beauty shop{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.0-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+
+
+    <style>
+@font-face {
+    font-family: "lalezar";
+    src: url("{% static 'fonts/Lalezar-Regular.ttf' %}");
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+}
+.highlite{
+    margin-left: 110px;
+} 
+
+.nav-wrapper{
+    width: 70%;
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-img{
+    height: 100%;
+    margin-top: 5px;
+}
+
+.search-box{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 25px;
+    background: #fafafa;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.search-box::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-items{
+    height: 22px;
+    position: relative;
+}
+
+.icon{
+    height: 100%;
+    cursor: pointer;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.user-profile{
+    width: 22px;
+    border-radius: 50%;
+    background-image: url(img/profile-pic.png);
+    background-size: cover;
+}
+.main{
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    width: 70%;
+    max-width: 1000px;
+    grid-gap: 30px;
+}
+
+.left-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.status-wrapper{
+    width: 100%;
+    height: 120px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.status-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.status-card{
+    flex: 0 0 auto;
+    width: 80px;
+    max-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.profile-pic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+}
+
+.profile-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.username{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    margin-top:5px;
+    color: rgba(0, 0, 0, 0.5)
+}
+.post{
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 40px;
+}
+
+.info{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.info .username{
+    width: auto;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.info .options{
+    height: 10px;
+    cursor: pointer;
+}
+
+.info .user{
+    display: flex;
+    align-items: center;
+}
+
+.info .profile-pic{
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    background: none;
+}
+
+.info .profile-pic img{
+    border: none;
+}
+
+.post-image{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.post-content{
+    width: 100%;
+    padding: 20px;
+}
+
+.likes{
+    font-weight: bold;
+}
+
+.description{
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.description span{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.post-time{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.comment-wrapper{
+    width: 100%;
+    height: 50px;
+    border-radius: 1px solid #dfdfdf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-wrapper .icon{
+    height: 30px;
+}
+
+.comment-box{
+    width: 80%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.comment-btn,
+.action-btn{
+    width: 70px;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: rgb(0, 162, 255);
+    opacity: 0.5;
+}
+
+.reaction-wrapper{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+}
+
+.reaction-wrapper .icon{
+    height: 25px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.reaction-wrapper .icon.save{
+    margin-left: auto;
+}
+.right-col{
+    padding: 20px;
+}
+
+.profile-card{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-card .profile-pic{
+    flex: 0 0 auto;
+    padding: 0;
+    background: none;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.profile-card:first-child .profile-pic{
+    width: 70px;
+    height: 70px;
+}
+
+.profile-card .profile-pic img{
+    border: none;
+}
+
+.profile-card .username{
+    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+}
+
+.sub-text{
+    color: rgba(0, 0, 0, 0.5);
+    font-size:12px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.action-btn{
+    opacity: 1;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.suggestion-text{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+@media (max-width: 1100px){
+    .right-col, .search-box{
+        display: none;
+    }
+    .nav-wrapper,
+    .wrapper{
+        width: 90%;
+    }
+    .wrapper{
+        display: block;
+    }
+}
+
+@media (max-width: 500px){
+    .nav-items .icon{
+        margin: 0 5px;
+    }
+    .post-image{
+        height: 50%;
+    }
+}
+body{
+    background-color: white;
+}
+body,a,p,h1,h2,h3,h4,h5,h6,span{
+    font-family: "lalezar";
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+ul{
+    list-style-type: none;
+}
+
+.column {
+    width: 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+.rtl{
+    direction: rtl;
+}
+.ltr{
+    direction:ltr;
+}
+
+.price{
+    font-size:14px;
+}
+.search{
+    width:212px;
+    transition:width 0.6s;
+}
+.search:focus{
+    width:250px;
+}
+.footera:hover{
+    color: #000;
+    background-color: antiquewhite;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid mb-5">
+        <div class="row ">
+            <div class="col-12 mt-3 rtl pe-3">
+                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'home' %} bg-dark text-white {% endif %}" href="{% url 'home' %}">{% trans "home" %}</a></span>
+                {% if request.user.is_authenticated %}
+                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'cart_view' %} bg-dark text-white {% endif %}" href="{% url 'cart_view' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i><span class='badge bg-danger text-white'>{{cart|length}}</span></a></span>
+                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'userorders' %} bg-dark text-white {% endif %}" href="{% url 'userorders' %}">{% trans "order list" %}</a></span>
+                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_logout' %} bg-dark text-white {% endif %}" href="{% url 'account_logout' %}">{% trans "Logout" %}</a></span>
+                {% else %}
+                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_login' %} bg-dark text-white {% endif %}" href="{% url 'account_login' %}">{% trans "Login/SignUp" %}</a></span>
+                {% endif %}
+            </div>
+            <div class="col-12"><h2 class="text-center mb-3 mt-5"><a class='text-dark' href="{% url 'home' %}">{% trans "shop name" %}</a></h2></div>
+            {% if not request.user.is_authenticated %}
+            <div class='text-center bg-warning p-1'><h3>{% trans "for watching price of products and get discount code" %}</h3><a href="{% url 'account_signup' %}" class='fs-5 text-white bg-danger px-2 py-1 rounded-pill'>{% trans "signup" %}</a></div>
+            {% endif %}
+            <div class="col-12 text-end mb-3">
+                <a href="{% url 'home' %}"><img class="rounded-circle" style="width: 100px;height: 100px;" src="{% static 'images/403130_690.jpg' %}" alt="logo"></a>
+                <h4 class="rtl mt-3"> {% trans "our site products" %} {{all_product|length}}</h4>
+                <p>توضیحات درباره ی فروشگاه ما</p>
+                <div class="text-center mb-5"><a type="submit" class="btn bg-warning me-1 rounded-pill" href=""><i class="fa fa-search text-dark"></i></a><input style="border: 1px solid rgb(188, 188, 188);" class="rounded-pill pe-2 py-1 rtl search" type="text" placeholder="این جا جستجو کنید"></div>
+
+            </div><hr class="mb-4">
+            
+            {% comment %} <hr class='mt-3'> {% endcomment %}
+            {% block content %}
+            
+            {% endblock content %}
+            <footer style="background: linear-gradient(to right, rgb(46, 46, 46), rgb(110, 110, 110));" class="py-4" id="footer">
+                <br><br>
+                <div class="container-fluid ms-3">
+                    <div class="row">
+                        <div class="col-md-4 text-center">          
+                            <div class="footer-item">
+                                <div class="company-brand">
+                                    <a href="{% url 'home' %}"><img class="rounded-circle" style="width: 100px;height: 100px;" src="{% static 'images/403130_690.jpg' %}" alt="logo"></a>
+                                    <p class="text-white mt-3">متن توضیحی درباره ی فروشگاه و سایت ما</p><p></p>
+                                </div>
+                            </div>                   
+                        </div>   
+                        <div class="col-md-4 text-center">
+                            <div class="footer-menu">
+                                <h5 class="text-warning ms-4 mb-3">{% trans "follow us" %}</h5>
+                                <ul class="menu-list">
+                                    <li class='mt-3'>
+                                        <a class='footera p-2' href=""><i class="fa-brands fa-telegram fa-lg text-warning"></i> {% trans "telegram" %} </a>
+                                    </li>
+                                    <li class='mt-3'>
+                                        <a class='footera p-2' href=""><i class="fa-brands fa-whatsapp fa-lg text-warning"></i> {% trans "whatsapp" %} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+            
+                            <div class="footer-menu">
+                                <h5 class="text-warning ms-4"> {% trans "my account" %}</h5>
+                                <ul class="menu-list">
+                                    
+                                    <li class="mt-3">
+                                        <a class="footera p-2" href="/accounts/login/">{% trans "login" %}</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a class="footera p-2" href="/accounts/signup/">{% trans "signup" %}</a>
+                                    </li>
+                                    
+                                    <li class="mt-3">
+                                        <a class="footera p-2" href="/cart/">{% trans "cart" %}</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a class="footera p-2" href="/order/show/">{% trans "order" %}</a>
+                                    </li>
+                                </ul>
+                            </div>
+            
+                        </div>
+            
+                    </div>
+                    <!-- / row -->
+            
+                </div><br><br>
+            </footer>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'bootstrap-5.3.0-dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

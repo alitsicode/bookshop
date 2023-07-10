@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-07 10:38+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\apps.py:8 .\models.py:28 .\models.py:48
+msgid "order"
+msgstr "سفارش"
+
+#: .\mixins.py:11
+msgid "you cant delete this order"
+msgstr "شما نمیتوانید این سفارش را حذف کنید"
+
+#: .\models.py:10 .\models.py:27
+msgid "user"
+msgstr "کاربر"
+
+#: .\models.py:11
+msgid "firstname"
+msgstr "نام"
+
+#: .\models.py:12
+msgid "lastname"
+msgstr "نام خانوادگی"
+
+#: .\models.py:13
+msgid "address"
+msgstr "آدرس"
+
+#: .\models.py:14 .\templates\order\order.html:52
+msgid "phone"
+msgstr "تلفن"
+
+#: .\models.py:15 .\models.py:30
+msgid "created"
+msgstr "زمان ایجاد"
+
+#: .\models.py:21
+msgid "OrderInfo"
+msgstr "اطلاعات سفارش"
+
+#: .\models.py:22
+msgid "OrderInfos"
+msgstr "اطلاعات سفارش"
+
+#: .\models.py:28 .\templates\order\order.html:32
+msgid "info"
+msgstr "اطلاعات"
+
+#: .\models.py:29
+msgid "paid"
+msgstr "پرداخت شده"
+
+#: .\models.py:31
+msgid "updated"
+msgstr "زمان ویرایش"
+
+#: .\models.py:35 .\templates\order\listorder.html:14
+msgid "Order"
+msgstr "سفارش"
+
+#: .\models.py:36
+msgid "Orders"
+msgstr "سفارشات"
+
+#: .\models.py:49
+msgid "product"
+msgstr "محصول"
+
+#: .\models.py:50
+msgid "price"
+msgstr "قیمت"
+
+#: .\models.py:51
+msgid "quantity"
+msgstr "تعداد"
+
+#: .\templates\order\deleteorder.html:3
+msgid "Delete order"
+msgstr "حذف سفارش"
+
+#: .\templates\order\deleteorder.html:10
+msgid "Are you Sure to Delete order "
+msgstr "آیا از حذف سفارش مطمئنید؟"
+
+#: .\templates\order\deleteorder.html:14 .\templates\order\listorder.html:17
+msgid "Delete"
+msgstr "حذف"
+
+#: .\templates\order\info.html:4
+msgid "recieve info"
+msgstr "اطلاعات دریافت"
+
+#: .\templates\order\info.html:9
+msgid "edit recieve information"
+msgstr "ویرایش اطلاعات دریافت"
+
+#: .\templates\order\info.html:12
+msgid "done"
+msgstr "انجام شد"
+
+#: .\templates\order\listorder.html:3
+msgid "all orders"
+msgstr "همه ی سفارشات"
+
+#: .\templates\order\listorder.html:15
+msgid "You can pay anytime you want"
+msgstr "پرداخت و سفارش خود را نهایی کنید"
+
+#: .\templates\order\listorder.html:16
+msgid "watch"
+msgstr "مشاهده"
+
+#: .\templates\order\listorder.html:23
+msgid "you dont have any order yet !"
+msgstr "شما هنوز سفارشی ندارید !"
+
+#: .\templates\order\order.html:5
+msgid "order page"
+msgstr "صفحه ی سفارشات"
+
+#: .\templates\order\order.html:9
+msgid "Your Checkout"
+msgstr "فاکتور شما"
+
+#: .\templates\order\order.html:29
+msgid "Product"
+msgstr "محصول"
+
+#: .\templates\order\order.html:30
+msgid "Quantity"
+msgstr "تعداد"
+
+#: .\templates\order\order.html:31
+msgid "Price"
+msgstr "قیمت"
+
+#: .\templates\order\order.html:41 .\templates\order\order.html:43
+#: .\templates\order\order.html:62
+msgid "tooman"
+msgstr "تومان"
+
+#: .\templates\order\order.html:49 .\templates\order\order_create.html:16
+msgid "Address"
+msgstr "آدرس"
+
+#: .\templates\order\order.html:50
+msgid "name"
+msgstr "نام"
+
+#: .\templates\order\order.html:51
+msgid "Last name"
+msgstr "نام خانوادگی"
+
+#: .\templates\order\order.html:62
+msgid "Total Price"
+msgstr "قیمت نهایی"
+
+#: .\templates\order\order.html:63
+msgid "Pay"
+msgstr "پرداخت"
+
+#: .\templates\order\order_create.html:4
+msgid "create order"
+msgstr "ایجاد محصول"
+
+#: .\templates\order\order_create.html:8
+msgid "your current recieve address"
+msgstr "آدرس فعلی شما"
+
+#: .\templates\order\order_create.html:14
+msgid "Name"
+msgstr "نام"
+
+#: .\templates\order\order_create.html:15
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: .\templates\order\order_create.html:17
+msgid "Phone"
+msgstr "تلفن"
+
+#: .\templates\order\order_create.html:22
+msgid "continue ordering"
+msgstr "ادامه ی سفارش"
+
+#: .\templates\order\order_create.html:24
+msgid "new address"
+msgstr "آدرس جدید"
+
+#: .\views.py:38
+msgid "your Order successfuly deleted"
+msgstr "سفارش شما با موفقیت حذف شد"
+
+#: .\views.py:63
+msgid "your order successfuly created"
+msgstr "سفارش شما با موفقیت ثبت شد"
+
+#: .\views.py:80
+msgid "your recieve info successfuly add"
+msgstr "آدرس شما با موفقیت اضافه شد"

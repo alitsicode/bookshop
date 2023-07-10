@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanizelib %}
+{% load i18n %}
+
+{% block title %} {{product.title}} {% endblock title %}
+{% block content %}
+    <section class="main rtl">
+    <div class="wrapper">
+        <div style="background: #f2f2f2;" class="post">
+            <div class="info">
+                <div class="user">
+                    <div class="profile-pic"><img src="{% static 'images/403130_690.jpg' %}" alt=""></div>
+                    <p class="username mb-0 me-2">{% trans "shop name" %}</p>
+                </div>
+            </div>
+            <img src="{{product.image.url}}" class="post-image" alt="{{product.title}} image">
+            <div class="post-content">
+                <form action="{% url 'add_cart' product.id %}" method='POST'>
+                    {% csrf_token %}
+                    <span class="likes text-end">{{product.title}}</span>
+                    <div class="input-group quantity" style="width: 173px;float:left;">
+                        <div class="input-group-btn ">
+                            <a style='background: #e8b313;border-radius: 0px 30px 30px 0px;' onclick= "increment('demoInput-{{product.id}}')" class="btn btn-plus mt-0">
+                                <i style='padding-bottom:9px;' class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                        <input style='background-color: #2f2f2f;color:white;height:42px;' id='demoInput-{{product.id}}' name="quantity" type="number" min='1' max='100' value='1' class="card-input form-control border-0 text-center">
+                        <div class="input-group-btn ">
+                            <a style='background: #e8b313;border-radius: 30px 0px 0px 30px;' onclick= "decrement('demoInput-{{product.id}}')" class="btn btn-minus mt-0">
+                                <i style='padding-bottom:9px;' class="fa fa-minus"></i>
+                            </a>
+                        </div>
+                        <div class='text-center mt-2'>
+                            <button style='padding:4px 7px;width:180px;' type="submit" name="add-to-cart" class="btn bg-warning text-dark rounded "> <i class='fa fa-shopping-cart'></i> {% trans "Add to cart" %}</button>
+                        </div>
+                    </div>
+                </form>
+                <br><br><br>
+                
+                {% comment %} <div class="reaction-wrapper ltr">
+                    <a href="{% url 'add_cart' product.id %}">
+                        <i class="fa-solid fa-cart-shopping fa-lg text-dark"></i>
+                    </a>
+                </div> {% endcomment %}
+                
+                {% if request.user.is_authenticated %}
+                    {% if product.is_discount %}
+                        <div class="text-end ">قیمت : <del class='text-danger ms-2'> {{product.price|intcomma}} تومان </del> {{product.price_with_discount|intcomma}} تومان  </div>
+                    {% else %}
+                        <div class="text-end "> قیمت : {{product.price|intcomma}} تومان </div>
+                    {% endif %}
+                {% endif %}
+                
+                <div class="text-end mt-3">
+                    <span class="post-time fs-5">{% trans "description :" %}</span>
+                </div>
+                <p class="text-end ">{{product.description|linebreaks}}</p>
+                <div class='rtl text-start'><span class="post-time"> {{product.created}}</span> <i class="fa fa-clock"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

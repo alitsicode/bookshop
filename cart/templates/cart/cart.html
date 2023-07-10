@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanizelib %}
+{% block title %}{% trans "cart" %}{% endblock title %}
+{% block content %}
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+  
+          <div class="d-flex justify-content-between align-items-center mb-4 rtl">
+            <h3 class="fw-normal mb-0 text-black">{% trans "Shopping Cart" %}</h3>
+            
+          </div>
+          {% if cart|length %}
+            {% for item in cart %}
+            <form action="{% url 'add_cart' item.product_obj.id %}" method='POST'>
+              {% csrf_token %}
+              <div class="card rounded-3 mb-4 text-center">
+                <div class="card-body p-4">
+                  <div class="row d-flex justify-content-between align-items-center">
+                    <div class="col-md-2 col-lg-2 col-xl-11 text-start ms-5 mt-3">
+                      <a style='margin-left:52px;' href="{% url 'detail' item.product_obj.id %}" class="lead fw-normal mb-2 text-dark">{{item.product_obj.title}}</a>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img
+                        src="{{item.product_obj.image.url}}"
+                        class="img-fluid rounded-3" alt="{{item.product_obj.title}} image">
+                    </div>
+                    
+
+                    <div class="rtl col-md-3 col-lg-2 col-xl-2 mt-3 ">
+                      {% if item.product_obj.is_discount %}
+                      <h4 class="mb-0 fs-5"><del class='text-danger'>{{item.product_obj.price|intcomma}} تومان</del></h4>
+                      <h4 class="mb-0 mt-2 fs-5">{{item.product_obj.price_with_discount|intcomma}} تومان</h4>
+                      {% else %}
+                      <h4 class="mb-0 fs-5">{{item.product_obj.price|intcomma}} تومان</h4>
+                      {% endif %}
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 d-flex mt-3">
+                      <div class="input-group-btn ">
+                        <a style='background: #e8b313;border-radius: 30px 0px 0px 30px;' onclick= "decrement('demoInput-{{product.id}}')" class="btn btn-minus mt-0">
+                          <i class="fa fa-minus"></i>
+                        </a>
+                      </div>
+                      
+                      <input style='border:none;background-color: #eff2f1;' id='demoInput-{{product.id}}' type="number" class="form-control text-center quantity-amount p-0 mx-2" value="{{item.quantity}}" name='quantity'>
+                      
+                      <div class="input-group-btn ">
+                        <a style='background: #e8b313;border-radius: 0px 30px 30px 0px;' onclick= "increment('demoInput-{{product.id}}')" class="btn btn-plus mt-0">
+                          <i class="fa fa-plus"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-center mt-3">
+                      <input class='btn bg-primary text-white py-1 rounded-pill' type="submit" value='update'>
+                    </div>
+                    
+                    <div class="col-md-3 col-lg-2 col-xl-2 mt-3 rtl">
+                      <h4 class="mb-0 fs-5">{{item.total_price|intcomma}} تومان</h4>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-center mt-3">
+                      <a href="{% url 'remove_cart' item.product_obj.id %}" class="text-danger"><i class="fa fa-trash fa-lg"></i></a>
+                      
+                      {{item.product_update_number_form.inplace}}
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </form>
+            {% endfor %}
+            <div class="card">
+              <div class="card-body rtl text-center">
+                <h3>{% trans "total price" %} :</h3>
+                <h3 class="text-dark fs-5 ">  {{cart.total_price|intcomma}} تومان</h3>
+                <a href="{% url 'order_create' %}" class="btn bg-success rounded-pill btn-lg text-white">{% trans "ordering" %}</a>
+              </div>
+              {% else %}
+              <h3 class='text-center'>{% trans "your cart is empty yet !" %}</h3>
+              {% endif %}
+              <div class='text-end'><a href="{% url 'home' %}"><span class='btn bg-danger text-white me-2 mb-2'>{% trans "go shopping" %}</span></a></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

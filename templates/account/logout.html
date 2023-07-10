@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.0-dist/css/bootstrap.min.css' %}">
+    <title>{% trans "Logout" %}</title>
+</head>
+<body>
+    <div class="container mb-5 mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class='text-white bg-danger rounded-pill pb-2'>{% trans "Logout Page !" %}</h1>
+                <form action="" method='POST' class='mt-5'>
+                    {% csrf_token %}
+                    <h3 class='mb-4'>{% trans "are you sure to logout?" %}</h3>
+                    <button class='btn bg-danger px-5 rounded-pill text-white' type='submit'><span class='h4'>{% trans "logout" %}</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'bootstrap-5.3.0-dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

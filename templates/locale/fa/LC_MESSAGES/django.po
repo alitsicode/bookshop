@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-07 10:53+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\account\login.html:7 .\account\login.html:52 .\account\login.html:74
+msgid "Login"
+msgstr "ورود"
+
+#: .\account\login.html:68
+msgid "Remember me"
+msgstr "مرا به خاطر بسپار"
+
+#: .\account\login.html:80
+msgid "dont have account (signup)"
+msgstr "حساب ندارید (ثبت نام)"
+
+#: .\account\logout.html:9 .\base.html:414
+msgid "Logout"
+msgstr "خروج"
+
+#: .\account\logout.html:15
+msgid "Logout Page !"
+msgstr "صفحه ی خروج !"
+
+#: .\account\logout.html:18
+msgid "are you sure to logout?"
+msgstr "از خروج مطمئنید ؟"
+
+#: .\account\logout.html:19
+msgid "logout"
+msgstr "خروج"
+
+#: .\account\signup.html:7 .\account\signup.html:74
+msgid "SignUp"
+msgstr "ثبت نام"
+
+#: .\account\signup.html:41
+msgid "Signup"
+msgstr "ثبت نام"
+
+#: .\account\signup.html:52
+msgid "Username"
+msgstr "نام کاربری"
+
+#: .\account\signup.html:58
+msgid "Password"
+msgstr "رمز عبور"
+
+#: .\account\signup.html:63
+msgid "Password (again)"
+msgstr "رمز عبور (تکرار)"
+
+#: .\account\signup.html:81
+msgid "I have account (Login)"
+msgstr "از قبل حساب دارم (ورود)"
+
+#: .\base.html:413
+msgid "order list"
+msgstr "لیست سفارشات"
+
+#: .\base.html:416
+msgid "Login/SignUp"
+msgstr "ورود/ثبت نام"
+
+#: .\base.html:418
+msgid "home"
+msgstr "خانه"
+
+#: .\base.html:420
+msgid "shop name"
+msgstr "اسم فروشگاه"
+
+#: .\base.html:422
+msgid "for watching price of products and get discount code"
+msgstr "برای دیدن قیمت ها و اطلاع از کد تخفیف ثبت نام کنید"
+
+#: .\base.html:422 .\base.html:491
+msgid "signup"
+msgstr "ثبت نام"
+
+#: .\base.html:426
+msgid "our site products"
+msgstr "تعداد محصولات :"
+
+#: .\base.html:435
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#: .\base.html:470
+msgid "follow us"
+msgstr "ما را دنبال کنید"
+
+#: .\base.html:473
+msgid "telegram"
+msgstr "تلگرام"
+
+#: .\base.html:476
+msgid "whatsapp"
+msgstr "واتساپ"
+
+#: .\base.html:484
+msgid "my account"
+msgstr "حساب من"
+
+#: .\base.html:488
+msgid "login"
+msgstr "ورود"
+
+#: .\base.html:495
+msgid "cart"
+msgstr "سبد خرید"
+
+#: .\base.html:498
+msgid "order"
+msgstr "سفارش"
