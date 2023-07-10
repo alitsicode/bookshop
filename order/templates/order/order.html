@@ -56,12 +56,12 @@
                 </div>
             </div>
         </div>
-        {% comment %} <form method='POST' action="{% url 'discount' order.id %}">
+        <form method='POST' action="{% url 'discount' order.id %}">
             {% csrf_token %}
         <input type="text" name="discount_code">
-        <button type='submit'>{% trans "Apply" %}</button> {% endcomment %}
+        <button type='submit'>{% trans "Apply" %}</button>
         </form>
-        <p style='font-family:lalezar;' class='h3 text-dark'>{% trans "Total Price" %} : {{ order.get_total_price|intcomma }} {% trans "tooman" %}</p>
+        <p style='font-family:lalezar;' class='h3 text-dark'>{% trans "Total Price" %} : {{ order.order_total_price|intcomma }} {% trans "tooman" %}</p>
         <a style='border-radius:7px;' href="{% url 'order_pay' order.id %}" class="btn bg-success px-4 py-2 my-3 text-white ">{% trans "Pay" %} </a>
     </div>
 {% endblock %}

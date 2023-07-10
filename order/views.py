@@ -12,9 +12,8 @@ import requests
 # Create your views here.
 from cart.cart import Cart
 from django.views import generic
-from .models import( Order,OrderItem,OrderInfo
-# ,DiscountCode
-)
+from .models import Order,OrderItem,OrderInfo,DiscountCode
+
 from django.urls import reverse_lazy
 
 # list of user's open orders
@@ -58,9 +57,12 @@ def OrderCreateView(request):
 		order = Order.objects.create(user=request.user,info=request.user.orderinfo.last())
 		for item in cart:
 			if item['product_obj'].is_discount:
-				OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price_with_discount, quantity=item['quantity'])
+				orderitem=OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price_with_discount, quantity=item['quantity'])
+				order.order_total_price +=orderitem.price
 			else:
-				OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price, quantity=item['quantity'])
+				orderitem=OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price, quantity=item['quantity'])
+				order.order_total_price +=orderitem.price
+			order.save()
 		cart.clear()
 		messages.success(request,_("your order successfuly created"),'success')
 		return redirect('order_detail', order.id)
@@ -82,18 +84,18 @@ class OrderInfoCreate(LoginRequiredMixin,generic.CreateView):
 		messages.success(self.request,_("your recieve info successfuly add"),'success')
 		return super().form_valid(form)
 
-# class ApplyDiscountView(View):
-# 	def post(self,request,pk):
-# 		code=request.POST.get('discount_code')
-# 		order=get_object_or_404(Order,pk=pk)
-# 		discount_code=get_object_or_404(DiscountCode,name=code)
-# 		if discount_code.quantity==0:
-# 			return redirect('order_detail',order.id)
-# 		order.total_price -=order.total_price*discount_code.discount_percent/100
-# 		order.save()
-# 		discount_code.quantity -=1
-# 		discount_code.save()
-# 		return redirect('order_detail',order.id)
+class ApplyDiscountView(View):
+	def post(self,request,pk):
+		code=request.POST.get('discount_code')
+		order=get_object_or_404(Order,pk=pk)
+		discount_code=get_object_or_404(DiscountCode,name=code)
+		if discount_code.quantity==0:
+			return redirect('order_detail',order.id)
+		order.order_total_price -=order.order_total_price*discount_code.discount_percent/100
+		order.save()
+		discount_code.quantity -=1
+		discount_code.save()
+		return redirect('order_detail',order.id)
 
 # sand box mode
 # MERCHANT = 'ABFGbdhttyifkddfhrBFShggklerigoFJnfI'

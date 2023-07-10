@@ -26,7 +26,7 @@ class OrderInfo(models.Model):
 class Order(models.Model):
 	user = models.ForeignKey(Customeuser, on_delete=models.CASCADE, related_name='orders',verbose_name=_('user'))
 	info=models.ForeignKey(OrderInfo, verbose_name=_("info"), on_delete=models.CASCADE,related_name=_('order'))
-	# order_total_price=models.IntegerField(_("total_price"),default=0)
+	order_total_price=models.IntegerField(_("total_price"),default=0)
 	paid = models.BooleanField(default=False,verbose_name=_('paid'))
 	created = models.DateTimeField(auto_now_add=True,verbose_name=_('created'))
 	updated = models.DateTimeField(auto_now=True,verbose_name=_('updated'))

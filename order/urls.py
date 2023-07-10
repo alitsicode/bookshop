@@ -7,7 +7,7 @@ urlpatterns = [
 	path('delete/<int:pk>', views.DeleteOrder.as_view(), name='order_delete'),
 	path('show/', views.UserOrders.as_view(), name='userorders'),
     path('detail/<int:order_id>/', views.OrderDetailView.as_view(), name='order_detail'),
-	# path('discount/<int:pk>', views.ApplyDiscountView.as_view(), name='discount'),
+	path('discount/<int:pk>', views.ApplyDiscountView.as_view(), name='discount'),
     # ////////////////////////////////////////////////////////////////////////////////////
     path('pay/<int:order_id>/', views.OrderPayView.as_view(), name='order_pay'),
     path('verify/', views.OrderVerifyView.as_view(), name='order_verify'),

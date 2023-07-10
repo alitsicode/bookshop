@@ -430,6 +430,13 @@ img {
                 <div class="text-center mb-5"><a type="submit" class="btn bg-warning me-1 rounded-pill" href=""><i class="fa fa-search text-dark"></i></a><input style="border: 1px solid rgb(188, 188, 188);" class="rounded-pill pe-2 py-1 rtl search" type="text" placeholder="این جا جستجو کنید"></div>
 
             </div><hr class="mb-4">
+            {% if messages %}
+			<ul class="messages mb-0 top-message">
+				{% for message in messages %}
+				<li style='list-style:none;' {% if message.tags %} class="{{ message.tags }} text-center py-1 "{% endif %}> <span class='px-4 rounded-pill'  style='background-color: #338516;color:white;'>{{ message }}</span> </li>
+				{% endfor %}
+			</ul>
+		    {% endif %}
             
             {% comment %} <hr class='mt-3'> {% endcomment %}
             {% block content %}
