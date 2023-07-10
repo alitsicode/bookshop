@@ -61,6 +61,7 @@ class OrderItem(models.Model):
 class DiscountCode(models.Model):
 	name=models.CharField(_("code"), max_length=30)
 	discount_percent=models.SmallIntegerField(_("discount_percent"),default=0)
+	user_used=models.ManyToManyField(Customeuser, verbose_name=_("user_used"),related_name='discount_code',null=True,blank=True)
 	quantity=models.SmallIntegerField(_("quantity"),default=1)
 	created=models.DateTimeField(_("created"), auto_now_add=True)
 	

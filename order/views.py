@@ -11,6 +11,7 @@ from django.contrib import messages
 import requests
 # Create your views here.
 from cart.cart import Cart
+from accounts.models import Customeuser
 from django.views import generic
 from .models import Order,OrderItem,OrderInfo,DiscountCode
 
@@ -58,10 +59,10 @@ def OrderCreateView(request):
 		for item in cart:
 			if item['product_obj'].is_discount:
 				orderitem=OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price_with_discount, quantity=item['quantity'])
-				order.order_total_price +=orderitem.price
+				order.order_total_price +=orderitem.price*orderitem.quantity
 			else:
 				orderitem=OrderItem.objects.create(order=order, product=item['product_obj'], price=item['product_obj'].price, quantity=item['quantity'])
-				order.order_total_price +=orderitem.price
+				order.order_total_price +=orderitem.price*orderitem.quantity
 			order.save()
 		cart.clear()
 		messages.success(request,_("your order successfuly created"),'success')
@@ -89,10 +90,16 @@ class ApplyDiscountView(View):
 		code=request.POST.get('discount_code')
 		order=get_object_or_404(Order,pk=pk)
 		discount_code=get_object_or_404(DiscountCode,name=code)
-		if discount_code.quantity==0:
-			return redirect('order_detail',order.id)
+		# user_discount=[]
+		# for item in request.user.discount_code.all():
+			# user_discount.append(item)
+		for used in discount_code.user_used.all():
+			if discount_code.quantity==0 or request.user==used :
+				return redirect('order_detail',order.id)
 		order.order_total_price -=order.order_total_price*discount_code.discount_percent/100
 		order.save()
+		# user_discount.append(request.user)
+		discount_code.user_used.add(request.user)
 		discount_code.quantity -=1
 		discount_code.save()
 		return redirect('order_detail',order.id)
