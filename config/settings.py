@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
+    'jalali_date',
     'allauth',
     'allauth.account',
     'widget_tweaks',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'order',
+
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,7 @@ TEMPLATES = [
                 'pages.context_processor.show_category',
                 'pages.context_processor.show_products',
                 'cart.context_processors.cart',
-                # 'order.context_processors.show_info',
+                'pages.context_processor.show_info',
             ],
         },
     },
@@ -152,7 +154,16 @@ SITE_ID = 1
 LOGIN_URL = 'account_login'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+# Port for sending e-mail.
+EMAIL_PORT = 587
+# Optional SMTP authentication information for EMAIL_HOST.
+EMAIL_HOST_USER = 'ak2727027@gmail.com'
+EMAIL_HOST_PASSWORD = 'qnaokabxempyvumq'
+EMAIL_USE_TLS = True
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
@@ -164,3 +175,27 @@ USE_TZ = True
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'templates', 'locale'),
 )
+JALALI_DATE_DEFAULTS = {
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %Y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
+}
+ACCOUNT_FORMS = {'signup': 'accounts.forms.MyCustomSignupForm'}

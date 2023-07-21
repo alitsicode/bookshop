@@ -1,0 +1,70 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>پرداخت با زرین پال</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.0-dist/css/bootstrap.min.css' %}">
+
+
+    <style>
+        @font-face {
+            font-family: "lalezar";
+            src: url("{% static 'fonts/Lalezar-Regular.ttf' %}");
+        }
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        h1,h2,h3,h4,h5,h6,span,body,p,input,label,button {
+            font-family: lalezar;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+    <div class="form-signin">
+
+        <div class="text-center mb-4">
+            {% if type == 'تراکنش ناموفق بود یا توسط کاربر لغو شد'%}
+                <h1 class="h3 mb-3 font-weight-normal bg-danger text-white mt-4 py-2">{{type}}</h1>
+            {% elif type == 'تراکنش موفق'%}
+                <h1 class="h3 mb-3 font-weight-normal bg-success text-white mt-4 py-2">{{type}}</h1>
+                <h3> کد پیگیری شما: {{ref_id}}</h3>
+            {% elif type == 'تراکنش قبلا انجام شده' %}
+                <h1 class="h3 mb-3 font-weight-normal bg-primary text-white mt-4 py-2">{{type}}</h1>
+                <h3> کد پیگیری شما: {{message}}</h3>
+            {% elif type == 'تراکنش ناموفق' %}
+                <h1 class="h3 mb-3 font-weight-normal bg-danger text-white mt-4 py-2">{{type}}</h1>
+                <h3> کد پیگیری شما: {{message}}</h3>
+            {% else %}    
+                <h1 class="h3 mb-3 font-weight-normal bg-danger text-warning mt-4 py-2">{{type}}</h1>
+                <h3> {{message}}</h3>
+            {% endif %}
+            <a class='btn bg-dark text-white' href="{% url 'home' %}">بازگشت به فروشگاه</a>
+            
+        </div>
+        
+    </div>
+</body>
+
+</html>

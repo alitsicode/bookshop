@@ -7,21 +7,41 @@
     <div class="container">
         <div class="row rtl">
             {% if object_list %}
-            {% for order in object_list %}
-            <div class="col-md-3 mb-4">
-                <div style='background: linear-gradient(to right, rgb(168, 110, 0), rgb(242, 147, 0));' class="card me-3 text-center">
-                    <div class="card-body">
-                    <h5 class="card-title">{% trans "Order" %} {{order.id}}</h5>
-                    <p class="card-text">{% trans "You can pay anytime you want" %} </p>
-                    <a href="{% url 'order_detail' order.id %}" class="btn bg-success rounded-pill text-white">{% trans "watch" %}</a>
-                    <a href="{% url 'order_delete' order.id %}" class="btn bg-danger rounded-pill">{% trans "Delete" %}</a>
+                <h4>{% trans "waiting pay orders" %}</h4>
+                {% for order in object_list %}
+                    <div class="col-md-3 mb-4">
+                        <div style='background: linear-gradient(to right, rgb(49, 49, 49), rgb(106, 106, 106));' class="card me-3 text-center">
+                            <div class="card-body text-white">
+                            <h5 class="card-title">{% trans "Order" %} {{order.id}}</h5>
+                            <p class="card-text">{% trans "You can pay anytime you want" %} </p>
+                            <a target='_self' title='مشاهده سفارش' href="{% url 'order_detail' order.id %}" class="btn bg-warning text-dark rounded-pill">{% trans "watch" %}</a>
+                            <a target='_self' title='حذف سفارش' href="{% url 'order_delete' order.id %}" class="btn bg-danger rounded-pill text-white">{% trans "Delete" %}</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
-        {% else %}
-            <h3 class='text-center my-4 py-2 rtl'>{% trans "you dont have any order yet !" %}</h3>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <h3 class='text-center my-4 py-2 rtl'>{% trans "you dont have any waiting paid order yet !" %}</h3>
+            {% endif %}
+        </div>
+        <hr>
+        <div class="row rtl">
+            {% if orders %}
+                <h4>{% trans "orders paid" %}</h4>
+                {% for submit_order in orders %}
+                    <div class="col-md-3 mb-4">
+                        <div style='background: linear-gradient(to right, rgb(49, 49, 49), rgb(106, 106, 106));' class="card me-3 text-center">
+                            <div class="card-body text-white">
+                            <h5 class="card-title">{% trans "Order" %} {{submit_order.id}}</h5>
+                            <p class="card-text">{% trans "your order is Preparation" %} </p>
+                            <a target='_self' title='مشاهده سفارش' href="{% url 'order_detail' submit_order.id %}" class="btn bg-warning text-dark rounded-pill">{% trans "watch" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class='text-center my-4 py-2 rtl'>{% trans "you dont have any order yet !" %}</h3>
+            {% endif %}
         </div>
     </div>
   </section>

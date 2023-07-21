@@ -24,6 +24,7 @@ class OrderInfo(models.Model):
 
 # models to save user's orders
 class Order(models.Model):
+	tracking_code=models.CharField(_("کد رهگیری پست"), max_length=200,null=True,blank=True)
 	user = models.ForeignKey(Customeuser, on_delete=models.CASCADE, related_name='orders',verbose_name=_('user'))
 	info=models.ForeignKey(OrderInfo, verbose_name=_("info"), on_delete=models.CASCADE,related_name=_('order'))
 	order_total_price=models.IntegerField(_("total_price"),default=0)
@@ -38,7 +39,7 @@ class Order(models.Model):
 	
 
 	def __str__(self):
-		return f'{self.user.username}'
+		return f'{self.info.name}'
 
 	def get_total_price(self):
 		total = sum(item.get_cost() for item in self.items.all())
@@ -49,6 +50,7 @@ class OrderItem(models.Model):
 	order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items',verbose_name=_('order'))
 	product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name=_('product'),related_name='pro')
 	price = models.IntegerField(verbose_name=_('price'))
+	color=models.CharField(_("رنگ"), max_length=70,null=True,blank=True)
 	quantity = models.IntegerField(default=1,verbose_name=_('quantity'))
 
 	def __str__(self):
@@ -60,7 +62,10 @@ class OrderItem(models.Model):
 
 class DiscountCode(models.Model):
 	name=models.CharField(_("code"), max_length=30)
-	discount_percent=models.SmallIntegerField(_("discount_percent"),default=0)
+	discount_price1=models.BigIntegerField(_(" خرید 500.000 تومان و بیشتر (تخفیف را به ریال وارد کنید)"),default=0)
+	discount_price2=models.BigIntegerField(_(" خرید 1.000.000 تومان و بیشتر (تخفیف را به ریال وارد کنید)"),default=0)
+	discount_price3=models.BigIntegerField(_(" خرید 2.000.000 تومان و بیشتر (تخفیف را به ریال وارد کنید)"),default=0)
+	discount_price_send=models.BooleanField(_("رایگان کردن سفارش"),default=False)
 	user_used=models.ManyToManyField(Customeuser, verbose_name=_("user_used"),related_name='discount_code',null=True,blank=True)
 	quantity=models.SmallIntegerField(_("quantity"),default=1)
 	created=models.DateTimeField(_("created"), auto_now_add=True)

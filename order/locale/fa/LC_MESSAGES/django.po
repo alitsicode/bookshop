@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-07 10:38+0330\n"
+"POT-Creation-Date: 2023-07-13 16:53+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\apps.py:8 .\models.py:28 .\models.py:48
+
+#: .\apps.py:8 .\models.py:28 .\models.py:49
 msgid "order"
 msgstr "سفارش"
 
@@ -44,7 +45,7 @@ msgstr "آدرس"
 msgid "phone"
 msgstr "تلفن"
 
-#: .\models.py:15 .\models.py:30
+#: .\models.py:15 .\models.py:31 .\models.py:66
 msgid "created"
 msgstr "زمان ایجاد"
 
@@ -61,32 +62,57 @@ msgid "info"
 msgstr "اطلاعات"
 
 #: .\models.py:29
+msgid "total_price"
+msgstr "قیمت نهایی"
+
+#: .\models.py:30
 msgid "paid"
 msgstr "پرداخت شده"
 
-#: .\models.py:31
+#: .\models.py:32
 msgid "updated"
 msgstr "زمان ویرایش"
 
-#: .\models.py:35 .\templates\order\listorder.html:14
+#: .\models.py:36 .\templates\order\listorder.html:15
+#: .\templates\order\listorder.html:35
 msgid "Order"
 msgstr "سفارش"
 
-#: .\models.py:36
+#: .\models.py:37
 msgid "Orders"
 msgstr "سفارشات"
 
-#: .\models.py:49
+#: .\models.py:50
 msgid "product"
 msgstr "محصول"
 
-#: .\models.py:50
+#: .\models.py:51
 msgid "price"
 msgstr "قیمت"
 
-#: .\models.py:51
+#: .\models.py:52 .\models.py:65
 msgid "quantity"
 msgstr "تعداد"
+
+#: .\models.py:62
+msgid "code"
+msgstr "کد"
+
+#: .\models.py:63
+msgid "discount_percent"
+msgstr "درصد تخفیف"
+
+#: .\models.py:64
+msgid "user_used"
+msgstr "کاربر استفاده کرده"
+
+#: .\models.py:70
+msgid "DiscountCode"
+msgstr "کد تخفیف"
+
+#: .\models.py:71
+msgid "DiscountCodes"
+msgstr "کدهای تخفیف"
 
 #: .\templates\order\deleteorder.html:3
 msgid "Delete order"
@@ -96,7 +122,7 @@ msgstr "حذف سفارش"
 msgid "Are you Sure to Delete order "
 msgstr "آیا از حذف سفارش مطمئنید؟"
 
-#: .\templates\order\deleteorder.html:14 .\templates\order\listorder.html:17
+#: .\templates\order\deleteorder.html:14 .\templates\order\listorder.html:18
 msgid "Delete"
 msgstr "حذف"
 
@@ -116,15 +142,37 @@ msgstr "انجام شد"
 msgid "all orders"
 msgstr "همه ی سفارشات"
 
-#: .\templates\order\listorder.html:15
+#: .\templates\order\listorder.html:10
+msgid "waiting pay orders"
+msgstr ""
+
+#: .\templates\order\listorder.html:16
 msgid "You can pay anytime you want"
 msgstr "پرداخت و سفارش خود را نهایی کنید"
 
-#: .\templates\order\listorder.html:16
+#: .\templates\order\listorder.html:17 .\templates\order\listorder.html:37
 msgid "watch"
 msgstr "مشاهده"
 
-#: .\templates\order\listorder.html:23
+#: .\templates\order\listorder.html:24
+#, fuzzy
+#| msgid "you dont have any order yet !"
+msgid "you dont have any waiting paid order yet !"
+msgstr "شما هنوز سفارشی ندارید !"
+
+#: .\templates\order\listorder.html:30
+#, fuzzy
+#| msgid "order page"
+msgid "orders paid"
+msgstr "صفحه ی سفارشات"
+
+#: .\templates\order\listorder.html:36
+#, fuzzy
+#| msgid "your order successfuly created"
+msgid "your order is Preparation"
+msgstr "سفارش شما با موفقیت ثبت شد"
+
+#: .\templates\order\listorder.html:43
 msgid "you dont have any order yet !"
 msgstr "شما هنوز سفارشی ندارید !"
 
@@ -149,9 +197,9 @@ msgid "Price"
 msgstr "قیمت"
 
 #: .\templates\order\order.html:41 .\templates\order\order.html:43
-#: .\templates\order\order.html:62
-msgid "tooman"
-msgstr "تومان"
+#: .\templates\order\order.html:66 .\templates\order\order.html:70
+msgid "rial"
+msgstr "ریال"
 
 #: .\templates\order\order.html:49 .\templates\order\order_create.html:16
 msgid "Address"
@@ -165,11 +213,15 @@ msgstr "نام"
 msgid "Last name"
 msgstr "نام خانوادگی"
 
-#: .\templates\order\order.html:62
+#: .\templates\order\order.html:65
+msgid "Apply"
+msgstr "اعمال"
+
+#: .\templates\order\order.html:66 .\templates\order\order.html:70
 msgid "Total Price"
 msgstr "قیمت نهایی"
 
-#: .\templates\order\order.html:63
+#: .\templates\order\order.html:67
 msgid "Pay"
 msgstr "پرداخت"
 
@@ -201,14 +253,25 @@ msgstr "ادامه ی سفارش"
 msgid "new address"
 msgstr "آدرس جدید"
 
-#: .\views.py:38
+#: .\views.py:41
 msgid "your Order successfuly deleted"
 msgstr "سفارش شما با موفقیت حذف شد"
 
-#: .\views.py:63
+#: .\views.py:69
 msgid "your order successfuly created"
 msgstr "سفارش شما با موفقیت ثبت شد"
 
-#: .\views.py:80
+#: .\views.py:86
 msgid "your recieve info successfuly add"
 msgstr "آدرس شما با موفقیت اضافه شد"
+
+#: .\views.py:96
+msgid "discount code expired or you used it one time before"
+msgstr "کد تخفیف منقضی شده یا یکبار از کد استفاده کرده اید"
+
+#: .\views.py:103
+msgid "your discount code successfully apply"
+msgstr "کد تخفیف شما با موفقیت روی سفارش اعمال شد"
+
+#~ msgid "tooman"
+#~ msgstr "تومان"

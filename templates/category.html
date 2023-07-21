@@ -1,15 +1,7 @@
-{% load static %}
 {% load i18n %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
     <section class="ftco-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 mt-4 ">
                     <h2 class="heading-section mb-5 pb-md-4 text-end text-dark me-3">{% trans "categories" %}</h2>
@@ -18,9 +10,9 @@
                     <div class="featured-carousel owl-carousel">
                         {% for category in categories %}
                             <div class="item ">
-                                <a href="{% url 'category_product' category.id %}" class="block-20 d-flex align-items-center rounded-circle highlite" style=" width: 100px;height: 100px; background-image: url('{{category.cover.url}}');"></a>
+                                <a title='محصولات دسته بندی' target='_self' href="{% url 'category_product' category.id %}" class="block-20 d-flex align-items-center rounded-circle highlite" style=" width: 100px;height: 100px; background-image: url('{{category.cover.url}}');"></a>
                                 <div class="text p-4">
-                                    <h3 class="heading text-center highlite-text"><a class="text-dark" href="{% url 'category_product' category.id %}">{{category.title}}</a></h3>
+                                    <h3 class="heading text-center highlite-text"><a title='محصولات دسته بندی' target='_self' class="text-dark" href="{% url 'category_product' category.id %}">{{category.title}}</a></h3>
                                 </div>
                             </div>
                         {% endfor %}
@@ -29,5 +21,3 @@
             </div>
         </div>
     </section>
-</body>
-</html>

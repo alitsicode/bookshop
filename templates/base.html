@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}beauty shop{% endblock title %}</title>
+    <title>{% block title %}{{info.site_name}}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -17,6 +18,10 @@
     font-family: "lalezar";
     src: url("{% static 'fonts/Lalezar-Regular.ttf' %}");
 }
+::selection {
+    color: white;
+    background-color: black;
+  }
 .navbar{
     position: fixed;
     top: 0;
@@ -91,7 +96,7 @@
 }
 
 .wrapper{
-    width: 70%;
+    width: 50%;
     max-width: 1000px;
     grid-gap: 30px;
 }
@@ -358,6 +363,9 @@
         height: 50%;
     }
 }
+.item{
+    width:70%;
+}
 body{
     background-color: white;
 }
@@ -390,18 +398,21 @@ img {
 }
 
 .price{
-    font-size:14px;
+    font-size:20px;
 }
 .search{
-    width:212px;
+    width:250px;
     transition:width 0.6s;
 }
 .search:focus{
-    width:250px;
+    width:270px;
 }
 .footera:hover{
     color: #000;
     background-color: antiquewhite;
+}
+.header-a{
+    font-size:19px;
 }
 
     </style>
@@ -409,31 +420,37 @@ img {
 <body>
     <div class="container-fluid mb-5">
         <div class="row ">
-            <div class="col-12 mt-3 rtl pe-3">
-                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'home' %} bg-dark text-white {% endif %}" href="{% url 'home' %}">{% trans "home" %}</a></span>
+            <div style='padding-right:35px;' class="col-12 mt-5 rtl">
+                <span class="ms-2"><a target='_self' title='home' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'home' %} bg-dark text-white {% endif %}" href="{% url 'home' %}">{% trans "home" %}</a></span>
                 {% if request.user.is_authenticated %}
-                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'cart_view' %} bg-dark text-white {% endif %}" href="{% url 'cart_view' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i><span class='badge bg-danger text-white'>{{cart|length}}</span></a></span>
-                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'userorders' %} bg-dark text-white {% endif %}" href="{% url 'userorders' %}">{% trans "order list" %}</a></span>
-                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_logout' %} bg-dark text-white {% endif %}" href="{% url 'account_logout' %}">{% trans "Logout" %}</a></span>
+                <span class="ms-2"><a target='_self' title='cart' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'cart_view' %} bg-dark text-white {% endif %}" href="{% url 'cart_view' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i><span class='badge bg-danger text-white'>{{cart|length}}</span></a></span>
+                <span class="ms-2"><a target='_self' title='order list' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'userorders' %} bg-dark text-white {% endif %}" href="{% url 'userorders' %}">{% trans "order list" %}</a></span>
+                <span class="ms-2"><a target='_self' title='logout' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_logout' %} bg-dark text-white {% endif %}" href="{% url 'account_logout' %}">{% trans "Logout" %}</a></span>
                 {% else %}
-                <span class="ms-2"><a class="text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_login' %} bg-dark text-white {% endif %}" href="{% url 'account_login' %}">{% trans "Login/SignUp" %}</a></span>
+                <span class="ms-2"><a target='_self' title='login/signup' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_login' %} bg-dark text-white {% endif %}" href="{% url 'account_login' %}">{% trans "Login/SignUp" %}</a></span>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                    <span class="ms-2"><a target='_self' title='login/signup' class="header-a text-dark p-1 px-2 rounded-pill {% if request.resolver_match.url_name == 'account_login' %} bg-dark text-white {% endif %}" href="https://www.sweetyshopstore.com/admin">{% trans "مدیریت" %}</a></span>
                 {% endif %}
             </div>
-            <div class="col-12"><h2 class="text-center mb-3 mt-5"><a class='text-dark' href="{% url 'home' %}">{% trans "shop name" %}</a></h2></div>
+            <div class="col-12"><h1 class="text-center mb-3 mt-5"><a target='_self' title='home' class='text-dark' href="{% url 'home' %}">{{info.site_name}}</a></h1></div>
             {% if not request.user.is_authenticated %}
-            <div class='text-center bg-warning p-1'><h3>{% trans "for watching price of products and get discount code" %}</h3><a href="{% url 'account_signup' %}" class='fs-5 text-white bg-danger px-2 py-1 rounded-pill'>{% trans "signup" %}</a></div>
+            <div class='text-center bg-warning p-1'><h3>{% trans "for watching price of products and get discount code" %}</h3><a target='_self' title='signup' href="{% url 'account_signup' %}" class='header-a text-white bg-danger px-2 py-1 rounded-pill'>{% trans "signup" %}</a></div>
             {% endif %}
-            <div class="col-12 text-end mb-3">
-                <a href="{% url 'home' %}"><img class="rounded-circle" style="width: 100px;height: 100px;" src="{% static 'images/403130_690.jpg' %}" alt="logo"></a>
-                <h4 class="rtl mt-3"> {% trans "our site products" %} {{all_product|length}}</h4>
-                <p>توضیحات درباره ی فروشگاه ما</p>
-                <div class="text-center mb-5"><a type="submit" class="btn bg-warning me-1 rounded-pill" href=""><i class="fa fa-search text-dark"></i></a><input style="border: 1px solid rgb(188, 188, 188);" class="rounded-pill pe-2 py-1 rtl search" type="text" placeholder="این جا جستجو کنید"></div>
+            <div class="col-12 text-end mb-3 me-3 pe-4">
+                <a target='_self' title='home' href="{% url 'home' %}"><img class="rounded-circle" style="width: 140px;height: 140px;border:2px solid black;" src="{{info.logo.url}}" alt="{{info.site_name}} فروشگاه"></a>
+                <h4 class="rtl mt-3 fs-2"> {% trans "our site products" %} {{products|length}}</h4>
+                <p class='fs-4'>{{info.site_description}}</p>
+                <form action="{% url 'search' %}" class="text-center mb-5">
+                    <button type="submit" class="btn bg-warning me-1 rounded-pill"><i class="fa fa-search text-dark"></i></button>
+                    <input name='search' style="border: 1px solid black;" class="rounded-pill pe-2 py-1 rtl search" type="text" placeholder="این جا جستجو کنید">
+                </form>
 
             </div><hr class="mb-4">
             {% if messages %}
 			<ul class="messages mb-0 top-message">
 				{% for message in messages %}
-				<li style='list-style:none;' {% if message.tags %} class="{{ message.tags }} text-center py-1 "{% endif %}> <span class='px-4 rounded-pill'  style='background-color: #338516;color:white;'>{{ message }}</span> </li>
+				<li style='list-style:none;' {% if message.tags %} class="{{ message.tags }} text-center py-1 "{% endif %}> <span class='fs-4 px-4 rounded-pill text-white bg-{{message.tags}}'>{{ message }}</span> </li>
 				{% endfor %}
 			</ul>
 		    {% endif %}
@@ -446,46 +463,67 @@ img {
                 <br><br>
                 <div class="container-fluid ms-3">
                     <div class="row">
-                        <div class="col-md-4 text-center">          
+                        <div class="col-md-4 text-center mb-4">          
                             <div class="footer-item">
                                 <div class="company-brand">
-                                    <a href="{% url 'home' %}"><img class="rounded-circle" style="width: 100px;height: 100px;" src="{% static 'images/403130_690.jpg' %}" alt="logo"></a>
-                                    <p class="text-white mt-3">متن توضیحی درباره ی فروشگاه و سایت ما</p><p></p>
+                                    <a target='_self' title='home' href="{% url 'home' %}"><img class="rounded-circle" style="width: 140px;height: 140px;" src="{{info.logo.url}}" alt="{{info.site_name}} فروشگاه"></a>
+                                    <p class="text-white mt-3 fs-4">{{info.site_description}}</p><p></p>
                                 </div>
                             </div>                   
                         </div>   
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-4 col-6 text-center">
                             <div class="footer-menu">
-                                <h5 class="text-warning ms-4 mb-3">{% trans "follow us" %}</h5>
+                                <h5 class="text-warning ms-4 mb-3 fs-4">{% trans "follow us" %}</h5>
                                 <ul class="menu-list">
+                                    {% if info.telegram_id %}
                                     <li class='mt-3'>
-                                        <a class='footera p-2' href=""><i class="fa-brands fa-telegram fa-lg text-warning"></i> {% trans "telegram" %} </a>
+                                        <a target='_self' title='telegram' class='footera p-2 fs-4' href="https://telegram.me/{{info.telegram_id}}"><i class="fa-brands fa-telegram fa-lg text-warning"></i> {{info.telegram_id}} </a>
                                     </li>
+                                    {% endif %}
+                                    {% if info.instagram_id %}
                                     <li class='mt-3'>
-                                        <a class='footera p-2' href=""><i class="fa-brands fa-whatsapp fa-lg text-warning"></i> {% trans "whatsapp" %} </a>
+                                        <a target='_self' title='instagram' class='footera p-2 fs-4' href="https://instagram.com/{{info.instagram_id}}"><i class="fa-brands fa-instagram fa-lg text-warning"></i> {{info.instagram_id}} </a>
                                     </li>
+                                    {% endif %}
+                                    {% if info.whatsapp_number %}
+                                    <li class='mt-3'>
+                                        <a target='_self' title='whatsapp' class='footera p-2 fs-4' href="https://wa.me/+98{{info.whatsapp_number}}"><i class="fa-brands fa-whatsapp fa-lg text-warning"></i> {{info.whatsapp_number}} </a>
+                                    </li>
+                                    {% endif %}
+                                    {% if info.phone_number %}
+                                    <li class='mt-3'>
+                                        <a target='_self' title='phone number' class='footera p-2 fs-4' href=""><i class="fa fa-phone fa-lg text-warning"></i> {{info.phone_number}} </a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-4 col-6 text-center">
             
                             <div class="footer-menu">
-                                <h5 class="text-warning ms-4"> {% trans "my account" %}</h5>
+                                <h5 class="text-warning ms-4 fs-4"> {% trans "my account" %}</h5>
                                 <ul class="menu-list">
                                     
+                                    {% if request.user.is_authenticated %}
                                     <li class="mt-3">
-                                        <a class="footera p-2" href="/accounts/login/">{% trans "login" %}</a>
-                                    </li>
-                                    <li class="mt-3">
-                                        <a class="footera p-2" href="/accounts/signup/">{% trans "signup" %}</a>
+                                        <a target='_self' title='logout' class="footera p-2 fs-4" href="{% url 'account_logout' %}">{% trans "خروج" %}</a>
                                     </li>
                                     
+                                    
                                     <li class="mt-3">
-                                        <a class="footera p-2" href="/cart/">{% trans "cart" %}</a>
+                                        <a target='_self' title='cart' class="footera p-2 fs-4" href="{% url 'cart_view' %}">{% trans "cart" %}</a>
                                     </li>
                                     <li class="mt-3">
-                                        <a class="footera p-2" href="/order/show/">{% trans "order" %}</a>
+                                        <a target='_self' title='order' class="footera p-2 fs-4" href="{% url 'userorders' %}">{% trans "سفارشات" %}</a>
                                     </li>
+                                    {% else %}
+                                    <li class="mt-3">
+                                        <a target='_self' title='login' class="footera p-2 fs-4" href="{% url 'account_login' %}">{% trans "login" %}</a>
+                                    </li>
+                                    <li class="mt-3">
+                                        <a target='_self' title='signup' class="footera p-2 fs-4" href="{% url 'account_signup' %}">{% trans "signup" %}</a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
             

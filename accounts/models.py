@@ -6,8 +6,8 @@ from django.utils.html import format_html
 
 
 class Customeuser(AbstractUser):
-    email=models.EmailField(_('email'),max_length=254,unique=True)
-    phone=models.CharField(_('phone'),max_length=11,null=True,blank=True)
+    email=models.EmailField(_('email'),max_length=254)
+    phone=models.CharField(_('phone'),max_length=11,default='09122222222')
 
     
     def __str__(self):

@@ -7,12 +7,13 @@
 	<title>{% trans "SignUp" %}</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="بهترین فروشگاه اینترنتی برای خرید لوازم ارایشی بهداشتی. پیج ما را هم در اینستاگرام میتوانید دنبال کنید">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}"> {% endcomment %}
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
 <!--===============================================================================================-->
@@ -28,12 +29,23 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/utillogin.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/mainlogin.css' %}">
+	<link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 <!--===============================================================================================-->
+<style>
+	@font-face {
+		font-family: "lalezar";
+		src: url("{% static 'fonts/Lalezar-Regular.ttf' %}");
+	}
+	body,p,h1,h2,h3,h4,h5,h6,span,a{
+		font-family: "lalezar";
+	}
+</style>
 </head>
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('{% static 'images/bg-01.jpg' %}');">
+		<div class="container-login100" style="background-image: url('{% static 'images/Dollarphotoclub_64630903-m21492l9gzuwprukfg4s8nsp420bbf9stdvgsi04g8.jpg' %}');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login100-form validate-form" method='POST'>
                     {% csrf_token %}
@@ -49,20 +61,30 @@
 					{% endif %}
                         
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span class="label-input100">{% trans "Username" %}</span>
+						<span class="label-input100"><i class='fa fa-user text-white'></i></span>
 						{{form.username|add_class:"input100"}}
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
+
+					</div>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100"><i class='fa fa-phone text-white'></i></span>
+						{% render_field form.phone class="input100" placeholder='شماره تلفن' %}
+
+					</div>
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+						<span class="label-input100"><i class='fa fa-phone text-white'></i></span>
+						{% render_field form.email class="input100" placeholder='ایمیل' %}
+
 					</div>
 
 					<div class="wrap-input100 validate-input mb-5" data-validate="Password is required">
-						<span class="label-input100">{% trans "Password" %}</span>
+						<span class="label-input100"><i class="fa-solid fa-lock text-white"></i></span>
 						{{form.password1|add_class:"input100"}}
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
+
 					</div>
 					<div class="wrap-input100 validate-input mb-5" data-validate="Password is required">
-						<span class="label-input100">{% trans "Password (again)" %}</span>
+						<span class="label-input100"><i class="fa-solid fa-lock text-white"></i></span>
 						{{form.password2|add_class:"input100"}}
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
+
 					</div>
 					
 					
@@ -76,8 +98,8 @@
 						</div>
 					</div>
 
-					<div class="flex-col-c p-t-155">
-						<a href="{% url 'account_login' %}" class="txt2">
+					<div class="flex-col-c p-t-60">
+						<a title='login' target='_self' href="{% url 'account_login' %}" class="txt2 text-dark">
 							{% trans "I have account (Login)" %}
 						</a>
 					</div>

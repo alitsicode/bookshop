@@ -7,6 +7,10 @@
     
     <div style='margin-bottom:150px;' class='text-center'>  
         <h3 class='my-4'>{% trans "Your Checkout" %} </h3>
+        {% if order.paid %}
+        <h3 class='my-4'> : کد رهگیری پست</h3>
+        <h3 class='my-4'>{{order.tracking_code}}</h3>
+        {% endif %}
         <div class="container-fluid">
             <div class="row px-xl-5 rtl">
                 {% comment %} {% for item in order.items.all %}
@@ -27,6 +31,7 @@
                             <tr class='checkout-title'>
                                 <th class='text-center'>{% trans "Product" %}</th>
                                 <th class='text-center'>{% trans "Quantity" %}</th>
+                                {% comment %} <th class='text-center'>{% trans "رنگ" %}</th> {% endcomment %}
                                 <th class='text-center'>{% trans "Price" %}</th>
                                 <th class='text-center'>{% trans "info" %}</th>
                             </tr>
@@ -34,12 +39,13 @@
                         <tbody class="align-middle">
                             {% for item in order.items.all %}
                                 <tr class='order-item mb-2'>
-                                    <td class="align-middle text-center"><div class='pb-2'><a href="{% url 'order_detail' item.product.id %}"><img src="{{item.product.image.url}}" alt="{{item.product.title}} cover" style="width: 100px;height:120px;"></a></div> <a class='text-dark ms-3' href="{% url 'order_detail' item.product.id %}">{{item.product.title}}</a> </td>
+                                    <td class="align-middle text-center"><div class='pb-2'><a target='_self' title='جزئیات محصول' href="{% url 'order_detail' item.product.id %}"><img src="{{item.product.image.url}}" alt="{{item.product.title}} cover" style="width: 100px;height:120px;"></a></div> <a target='_self' title='جزئیات محصول' class='text-dark ms-3' href="{% url 'order_detail' item.product.id %}">{{item.product.title}}</a> </td>
                                     <td class="align-middle text-center">{{item.quantity}}</td>
+                                    {% comment %} <td class="align-middle text-center">{{item.color}}</td> {% endcomment %}
                                     {% if item.product.is_discount %}
-                                    <td class="align-middle text-center" >{{item.product.price_with_discount|intcomma}} {% trans "tooman" %}</td>
+                                    <td class="align-middle text-center" >{{item.product.price_with_discount|intcomma}} {% trans "rial" %}</td>
                                     {% else %}
-                                    <td class="align-middle text-center" >{{item.product.price|intcomma}} {% trans "tooman" %}</td>
+                                    <td class="align-middle text-center" >{{item.product.price|intcomma}} {% trans "rial" %}</td>
                                     {% endif %}
                                     <td class="align-middle text-center">
                                         
@@ -56,12 +62,20 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 text-end">
+            <h3> هزینه ی پست : 350,000 ریال</h3>
+        </div>
+        {% if not order.paid %}
         <form method='POST' action="{% url 'discount' order.id %}">
             {% csrf_token %}
-        <input type="text" name="discount_code">
-        <button type='submit'>{% trans "Apply" %}</button>
+            <input class='rounded rtl pe-2 border-2 border-dark' type="text" name="discount_code" placeholder='کد تخفیف وارد کنید'>
+            <button class='bg-warning text-dark rounded py-1 px-3 fs-5' type='submit'>{% trans "Apply" %}</button>
+            <p style='font-family:lalezar;' class='h3 text-dark mt-3'>{% trans "Total Price" %} : {{ order.order_total_price|intcomma }} {% trans "rial" %}</p>
+            <a title='پرداخت'  style='border-radius:7px;' href="{% url 'order_pay' order.id %}" class="btn bg-success px-4 py-2 my-3 text-white fs-5">{% trans "Pay" %} </a>
         </form>
-        <p style='font-family:lalezar;' class='h3 text-dark'>{% trans "Total Price" %} : {{ order.order_total_price|intcomma }} {% trans "tooman" %}</p>
-        <a style='border-radius:7px;' href="{% url 'order_pay' order.id %}" class="btn bg-success px-4 py-2 my-3 text-white ">{% trans "Pay" %} </a>
+        {% else %}
+        <p style='font-family:lalezar;' class='h3 text-dark mt-3'>{% trans "Total Price" %} : {{ order.order_total_price|intcomma }} {% trans "rial" %}</p>
+        
+        {% endif %}
     </div>
 {% endblock %}

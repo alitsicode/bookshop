@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-07 10:53+0330\n"
+"POT-Creation-Date: 2023-07-12 01:09+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\account\login.html:7 .\account\login.html:52 .\account\login.html:74
+#: .\account\login.html:7 .\account\login.html:64 .\account\login.html:87
 msgid "Login"
 msgstr "ورود"
 
-#: .\account\login.html:68
+#: .\account\login.html:81
 msgid "Remember me"
 msgstr "مرا به خاطر بسپار"
 
-#: .\account\login.html:80
+#: .\account\login.html:93
 msgid "dont have account (signup)"
 msgstr "حساب ندارید (ثبت نام)"
 
-#: .\account\logout.html:9 .\base.html:414
+#: .\account\logout.html:9 .\base.html:417
 msgid "Logout"
 msgstr "خروج"
 
@@ -45,86 +45,85 @@ msgstr "از خروج مطمئنید ؟"
 msgid "logout"
 msgstr "خروج"
 
-#: .\account\signup.html:7 .\account\signup.html:74
+#: .\account\signup.html:7 .\account\signup.html:86
 msgid "SignUp"
 msgstr "ثبت نام"
 
-#: .\account\signup.html:41
+#: .\account\signup.html:53
 msgid "Signup"
 msgstr "ثبت نام"
 
-#: .\account\signup.html:52
-msgid "Username"
-msgstr "نام کاربری"
-
-#: .\account\signup.html:58
-msgid "Password"
-msgstr "رمز عبور"
-
-#: .\account\signup.html:63
-msgid "Password (again)"
-msgstr "رمز عبور (تکرار)"
-
-#: .\account\signup.html:81
+#: .\account\signup.html:93
 msgid "I have account (Login)"
 msgstr "از قبل حساب دارم (ورود)"
 
+#: .\base.html:6
+msgid "beauty shop"
+msgstr "فروشگاه ارایشی بهداشتی"
+
 #: .\base.html:413
-msgid "order list"
-msgstr "لیست سفارشات"
-
-#: .\base.html:416
-msgid "Login/SignUp"
-msgstr "ورود/ثبت نام"
-
-#: .\base.html:418
 msgid "home"
 msgstr "خانه"
 
-#: .\base.html:420
+#: .\base.html:416
+msgid "order list"
+msgstr "سفارشات"
+
+#: .\base.html:419
+msgid "Login/SignUp"
+msgstr "ورود/ثبت نام"
+
+#: .\base.html:422
 msgid "shop name"
 msgstr "اسم فروشگاه"
 
-#: .\base.html:422
+#: .\base.html:424
 msgid "for watching price of products and get discount code"
 msgstr "برای دیدن قیمت ها و اطلاع از کد تخفیف ثبت نام کنید"
 
-#: .\base.html:422 .\base.html:491
+#: .\base.html:424 .\base.html:495
 msgid "signup"
 msgstr "ثبت نام"
 
-#: .\base.html:426
+#: .\base.html:428
 msgid "our site products"
 msgstr "تعداد محصولات :"
 
-#: .\base.html:435
-msgid "categories"
-msgstr "دسته بندی ها"
-
-#: .\base.html:470
+#: .\base.html:460
 msgid "follow us"
 msgstr "ما را دنبال کنید"
 
-#: .\base.html:473
-msgid "telegram"
-msgstr "تلگرام"
-
-#: .\base.html:476
-msgid "whatsapp"
-msgstr "واتساپ"
-
-#: .\base.html:484
+#: .\base.html:488
 msgid "my account"
 msgstr "حساب من"
 
-#: .\base.html:488
+#: .\base.html:492
 msgid "login"
 msgstr "ورود"
 
-#: .\base.html:495
+#: .\base.html:499
 msgid "cart"
 msgstr "سبد خرید"
 
-#: .\base.html:498
+#: .\base.html:502
 msgid "order"
 msgstr "سفارش"
+
+#: .\category.html:16
+msgid "categories"
+msgstr "دسته بندی ها"
+
+#~ msgid "Username"
+#~ msgstr "نام کاربری"
+
+#~ msgid "Password"
+#~ msgstr "رمز عبور"
+
+#~ msgid "Password (again)"
+#~ msgstr "رمز عبور (تکرار)"
+
+#~ msgid "telegram"
+#~ msgstr "تلگرام"
+
+#~ msgid "whatsapp"
+#~ msgstr "واتساپ"

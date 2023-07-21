@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-07 10:43+0330\n"
+"POT-Creation-Date: 2023-07-13 16:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: .\apps.py:8
 msgid "pages"
 msgstr "صفحات اصلی"
@@ -28,11 +29,11 @@ msgstr "تیتر"
 msgid "cover"
 msgstr "تصویر"
 
-#: .\models.py:9 .\models.py:32
+#: .\models.py:9 .\models.py:32 .\models.py:55
 msgid "created"
 msgstr "زمان ایجاد"
 
-#: .\models.py:10 .\models.py:33
+#: .\models.py:10 .\models.py:33 .\models.py:56
 msgid "updated"
 msgstr "زمان ویرایش"
 
@@ -57,16 +58,17 @@ msgid "image"
 msgstr "تصویر"
 
 #: .\models.py:29
-msgid "price"
-msgstr "قیمت"
+msgid "price (rial)"
+msgstr "(ریال) قیمت "
 
 #: .\models.py:30
 msgid "is_discount"
 msgstr "تخفیف دارد؟"
 
 #: .\models.py:31
-msgid "price_with_discount"
-msgstr "قیمت با تخفیف"
+#| msgid "price_with_discount"
+msgid "price_with_discount (rial)"
+msgstr "(ریال) قیمت با تخفیف"
 
 #: .\models.py:37
 msgid "Product"
@@ -76,27 +78,71 @@ msgstr "محصول"
 msgid "Products"
 msgstr "محصولات"
 
-#: .\templates\pages\detail.html:14
+#: .\models.py:48
+msgid "site_name"
+msgstr "نام سایت"
+
+#: .\models.py:49
+msgid "logo"
+msgstr "لوگو"
+
+#: .\models.py:50
+msgid "site_description"
+msgstr " توضیحات سایت"
+
+#: .\models.py:51
+msgid "whatsapp_number(no 0)"
+msgstr "شماره واتساپ (بدون صفر)"
+
+#: .\models.py:52
+msgid "telegram_id"
+msgstr "آیدی تلگرام"
+
+#: .\models.py:53
+msgid "instagram_id"
+msgstr "آیدی اینتاگرام"
+
+#: .\models.py:54
+msgid "phone_number"
+msgstr "شماره تلفن"
+
+#: .\models.py:59 .\models.py:60
+msgid "AboutUs"
+msgstr "درباره ما"
+
+#: .\templates\pages\detail.html:7
+msgid "detail of"
+msgstr "جزئیات"
+
+#: .\templates\pages\detail.html:15
 msgid "shop name"
 msgstr "نام فروشگاه"
 
-#: .\templates\pages\detail.html:35
+#: .\templates\pages\detail.html:36
 msgid "Add to cart"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\pages\detail.html:57
+#: .\templates\pages\detail.html:58
 msgid "description :"
 msgstr "توضیحات :"
 
-#: .\templates\pages\home.html:5
-msgid "home"
-msgstr "خانه"
-
-#: .\templates\pages\home.html:8
+#: .\templates\pages\home.html:9
 msgid "products"
 msgstr "محصولات"
 
-#: .\templates\pages\home.html:18 .\templates\pages\home.html:19
-#: .\templates\pages\home.html:21
-msgid "تومان"
-msgstr "تومان"
+#: .\templates\pages\home.html:19 .\templates\pages\home.html:20
+#: .\templates\pages\home.html:22
+msgid "rial"
+msgstr "ریال"
+
+#~ msgid "تومان"
+#~ msgstr "تومان"
+
+#~ msgid "price"
+#~ msgstr "قیمت"
+
+#~ msgid "beauty shop"
+#~ msgstr "فروشگاه ارایشی بهداشتی"
+
+#~ msgid "home"
+#~ msgstr "خانه"

@@ -2,24 +2,24 @@
 {% load static %}
 {% load i18n %}
 {% load humanizelib %}
-{% block title %}{% trans "home" %}{% endblock title %}
+{% block title %}{{info.site_name}}{% endblock title %}
 {% block content %}
             {% include "category.html" %}
             <div class="col-12 mb-3"></div>
-            <h3 class="text-end pe-3">{% trans "products" %}</h3>
+            <h3 class="text-end pe-3 fs-2">{% trans "products" %}</h3>
             <div class="row rtl pe-0">
                 {% for product in products %}
                 <figure class="col-4 mt-5 px-1 rtl">
-                    <a href="{% url 'detail' product.id %}">
+                    <a title='detail' target='_self' href="{% url 'detail' product.id %}">
                         <img style="height: 70%;border-radius: 25px;" src="{{product.image.url}}" alt="{{product.title}} cover">
                     </a>
-                    <figcaption class="text-end mt-2 me-2">{{product.title}}</figcaption>
+                    <figcaption class="text-end mt-2 me-2 fs-4">{{product.title}}</figcaption>
                     {% if request.user.is_authenticated %}
                         {% if product.is_discount %}
-                            <figcaption class="text-center mt-2 price text-danger"><del class='text-danger'>{{product.price|intcomma}} </del>{% trans "تومان" %}</figcaption>
-                            <figcaption class="text-center mt-2 price">{{product.price_with_discount|intcomma}} {% trans "تومان" %}</figcaption>
+                            <figcaption class="text-center mt-2 price text-danger"><del class='text-danger'>{{product.price|intcomma}} </del>{% trans "rial" %}</figcaption>
+                            <figcaption class="text-center mt-2 price">{{product.price_with_discount|intcomma}} {% trans "rial" %}</figcaption>
                         {% else %}
-                            <figcaption class="text-center mt-2 price">{{product.price|intcomma}} {% trans "تومان" %}</figcaption>
+                            <figcaption class="text-center mt-2 price">{{product.price|intcomma}} {% trans "rial" %}</figcaption>
                         {% endif %}
                     {% endif %}
                 </figure>
